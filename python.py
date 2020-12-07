@@ -3,6 +3,21 @@ import sys
 s=sys.argv[1]
 
 str1=''
+def coma(s,b):
+    num=0
+    if (57>=ord(s)>=48) and (57>=ord(b)>=48):
+        s= chr(ord(s)+1)
+        if s==b:
+            num=1
+    return num
+def comn(s,b):
+    num=0
+    if (90>=ord(s)>=65) and (90>=ord(b)>=65):  
+        s= chr(ord(s)+1)
+        if s==b:
+             num=1
+    return num
+
 if re.search('[A-Za-z]',s)==None:
     str1+='至少輸入一個英文 '
 if re.search('[0-9]',s)==None:
@@ -16,7 +31,14 @@ if len(s)>16:
 if re.search('[A-Z]',s)==None:
     str1+='至少輸入一個大寫字母 '
 else:
-    str1=''
+    str1==''  
+for i in range(len(s)-1):
+        if coma(s[i],s[i+1])==1:
+            str1+='數字不可連續 '
+            break;
+        if comn(s[i],s[i+1])==1:
+            str1+='字母不可連續 '
+            break;
 if str1=='':
     print("success")
 else:
